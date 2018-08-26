@@ -1,0 +1,64 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="durchsage.mp3">sounds/Gong-Durchsage-BF-Hamm.mp3</file>
+        <file alias="einzelfahrzeug.mp3">sounds/Gong-Einzelfzg-BF-Hamm.mp3</file>
+        <file alias="feuergong.mp3">sounds/Gong-LZ-BF-Hamm.mp3</file>
+        <file alias="rettungsgong.mp3">sounds/Gong-RD-Hamm.mp3</file>
+        <file>icon/alarm.png</file>
+        <file>icon/alarm-1.png</file>
+        <file>icon/alarm-2.png</file>
+        <file>icon/alarm-3.png</file>
+        <file>icon/alarm-4.png</file>
+        <file>icon/axes.png</file>
+        <file>icon/barbecue.png</file>
+        <file>icon/bomb.png</file>
+        <file>icon/boot.png</file>
+        <file>icon/bucket.png</file>
+        <file>icon/building.png</file>
+        <file>icon/campfire.png</file>
+        <file>icon/car.png</file>
+        <file>icon/chainsaw.png</file>
+        <file>icon/cone.png</file>
+        <file>icon/emergency.png</file>
+        <file>icon/exit.png</file>
+        <file>icon/extinguisher.png</file>
+        <file>icon/fire.png</file>
+        <file>icon/firefighters.png</file>
+        <file>icon/fire-station.png</file>
+        <file>icon/first-aid-kit.png</file>
+        <file>icon/flashlight.png</file>
+        <file>icon/gas.png</file>
+        <file>icon/gas-mask.png</file>
+        <file>icon/gasoline.png</file>
+        <file>icon/helmet.png</file>
+        <file>icon/helmet-1.png</file>
+        <file>icon/hose.png</file>
+        <file>icon/hose-1.png</file>
+        <file>icon/hose-2.png</file>
+        <file>icon/hose-3.png</file>
+        <file>icon/hose-4.png</file>
+        <file>icon/house.png</file>
+        <file>icon/insignia.png</file>
+        <file>icon/ladder.png</file>
+        <file>icon/ladder-1.png</file>
+        <file>icon/match.png</file>
+        <file>icon/match-1.png</file>
+        <file>icon/matchbox.png</file>
+        <file>icon/megaphone.png</file>
+        <file>icon/no-smoking.png</file>
+        <file>icon/pick.png</file>
+        <file>icon/road-sign.png</file>
+        <file>icon/shovel.png</file>
+        <file>icon/smartphone.png</file>
+        <file>icon/walkie-talkie.png</file>
+        <file>icon/water.png</file>
+        <file>icon/water-bomb.png</file>
+        <file>icon/water-bomb-1.png</file>
+        <file alias="bma.wav">sounds/brandmeldeanlagenalarm.wav</file>
+        <file alias="leitstelle.wav">sounds/Leitstelle besetzen.wav</file>
+        <file alias="undisponierte_einsaetze.wav">sounds/undisponierte_einsaetze.wav</file>
+        <file>map.qml</file>
+        <file>icon/map-marker-blue.png</file>
+        <file>icon/map-marker-red.png</file>
+    </qresource>
+</RCC>

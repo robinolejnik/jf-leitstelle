@@ -1,0 +1,58 @@
+BMA Automatische Feuermeldung
+Feuer auf Gewässer / Schiffsbrand
+Feuer Baum/Hecke/Gebüsch/Wiese
+Feuer Brandvermutung
+Feuer Dachstuhlbrand
+Feuer Explosion
+Feuer Garage
+Feuer Gas
+Feuer Gewerbe
+Feuer Kaminbrand
+Feuer Kellerbrand
+Feuer Landwirtschaft
+Feuer LKW
+Feuer Luftfahrzeug
+Feuer Mülltonne/Container
+Feuer PKW
+Feuer Schienenfahrzeug
+Feuer sonstiges
+Feuer Unrat
+Feuer Waldbrand
+Feuer Wohnhausbrand
+Feuer Wohnhausbrand mit Menschenleben in Gefahr
+Feuer Wohnungsbrand
+Feuer Wohnungsbrand mit Menschenleben in Gefahr
+Feuer Zimmerbrand
+Feuer Zimmerbrand mit Menschenleben in Gefahr
+First Responder
+TH Amtshilfe
+TH Aufzug
+TH Bahn
+TH Bahn / Person eingeklemmt
+TH Gasaustritt im Gebäude
+TH Gasgeruch im freien
+TH Gasgeruch im Gebäude
+TH Gausaustritt im freien
+TH Gefahrgut auslaufende Stoffe
+TH Gefahrgut / Chemie allgemein
+TH Höhen- / Tiefenrettung
+TH Luftfahrzeug Absturz / Person eingeklemmt
+TH Luftfahrzeug / Notlandung
+TH Öl auf Gewässer
+TH Ölspur
+TH Personensuche
+TH Person in Notlage
+TH Person in Notlage / eingeklemmt
+TH sonstiges
+TH Sturmeinsatz allgemein
+TH Taucheinsatz allgemein
+TH Taucheinsatz / Wasserrettung mit Menschenleben in Gefahr
+TH Tier in Notlage
+TH Unterstützung Rettungsdienst
+TH Unwetter allgemein
+TH Verkehrssicherung
+TH Verkehrsunfall / allgemein
+TH Verkehrsunfall / ausl. Betriebsstoffe
+TH Verkehrsunfall / mehrere Pers. eingekl.
+TH Verkehrsunfall / Person eingeklemmt
+TH Wasser im Gebäude

@@ -1,0 +1,9 @@
+{
+  "stichwort": "BMA_2_MIG",
+  "strasse": "Alter Uentroper Weg",
+  "hausnummer": "16",
+  "ort": "Hamm",
+  "objekt": "Asylbewerberunterkunft ZUE",
+  "bma_nummer": "0153",
+  "bemerkung": "Bereitstellungsraum Alter Uentroper Weg"
+}
