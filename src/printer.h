@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QTextDocument>
+#include <QUrl>
 #include "einsatz.h"
 
 class Printer : public QObject {

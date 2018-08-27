@@ -44,7 +44,7 @@ Item {
                     route: routeData
                     line.color: "red"
                     line.width: 4
-                    smooth: false
+                    smooth: true
                 }
             }
         }

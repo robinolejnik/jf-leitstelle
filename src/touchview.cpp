@@ -383,6 +383,8 @@ void TouchView::undisponierte_einsaetze() {
 void TouchView::on_toolButton_alarmieren_clicked() {
     emit EinsatzDisponiert(einsatz.einsatznummer);
     if(einsatz.einsatznummer>0 && einsatz.einsatztext()!="") {
+        einsatz.zeit_alarm = QTime::currentTime();
+        einsatz.datum_alarm = QDate::currentDate();
         Printer p;
         for(int i=0;i<einsatz.fahrzeuge_name.size();i++)
             p.print(einsatz);

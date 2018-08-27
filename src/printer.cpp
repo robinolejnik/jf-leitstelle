@@ -15,18 +15,24 @@ void Printer::print() {
 }
 
 void Printer::print(Einsatz &e) {
-    QFile file(":/print.html");
+    QFile file("print.html");
+    QFile cssfile("print.css");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
+    if(!cssfile.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
     QString htmlContent;
+    QString cssContent;
     QTextStream in(&file);
+    QTextStream in_css(&cssfile);
     htmlContent = in.readAll();
+    cssContent = in_css.readAll();
 
     QString fahrzeuge;
     if(e.fahrzeuge_name.size()>0)
         fahrzeuge = e.fahrzeuge_name[0];
     for(int i=1;i<e.fahrzeuge_name.size();i++)
-        fahrzeuge += ",<br />" + e.fahrzeuge_name[i];
+        fahrzeuge += ", " + e.fahrzeuge_name[i];
 
     htmlContent.replace(QString("<!--FAHRZEUGE-->"), fahrzeuge);
     htmlContent.replace(QString("<!--ANFAHRT-->"), e.anfahrt);
@@ -45,6 +51,8 @@ void Printer::print(Einsatz &e) {
     htmlContent.replace(QString("<!--ANNAHMEDATUM-->"), e.datum_annahme.toString("dd.MM.yyyy"));
 
     QTextDocument *document = new QTextDocument();
+    document->setPageSize(printer->paperSize(QPrinter::Point));
+    document->setDefaultStyleSheet(cssContent);
     document->setHtml(htmlContent);
     document->print(printer);
     delete document;
