@@ -1,19 +1,69 @@
-<html><head><meta charset="UTF-8"><title>Alarmausdruck</title></head><body>
-<h1>EINSATZ</h1>
-<table>
-<tr><td><h2><b>Stichwort:</b></td></h2><td><h2><b><!--STICHWORT--></b></td></h2></tr>
-<tr><td><h2>Objekt:</td></h2><td><h2><!--OBJEKT--></td></h2></tr>
-<tr><td><h2>Strasse:</td></h2><td><h2><!--STRASSE--></td></h2></tr>
-<tr><td><h2>Ort:</td></h2><td><h2><!--PLZ--> <!--ORT--></td></h2></tr>
-<tr><td><h2>Anfahrt:</td></h2><td><h2><!--ANFAHRT--></td></h2></tr>
-<tr><td><h2>Anrufer:</td></h2><td><h2><!--ANRUFER--></td></h2></tr>
-<tr><td><h2>Telefonnummer:</td></h2><td><h2><!--TELNUMMER--></td></h2></tr>
-<tr><td><h2>Geschaedigter:</td></h2><td><h2><!--GESCHAEDIGTER--></td></h2></tr>
-<tr><td><h2>Bemerkung:</td></h2><td><h2><!--BEMERKUNG--></td></h2></tr>
-<tr><td><h2>Einsatznummer:</td></h2><td><h2><!--EINSATZNUMMER--></td></h2></tr>
-<tr><td><h2>Alarmzeit:</td></h2><td><h2><!--ALARMZEIT--></td></h2></tr>
-<tr><td><h2>Alarmdatum:</td></h2><td><h2><!--ALARMDATUM--></td></h2></tr>
-<tr><td><h2>Fahrzeuge:</td></h2><td><h2><!--FAHRZEUGE--></td></h2></tr>
-</table>
-<img src="map.png"></img>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="print.css">
+    <title>Alarmausdruck</title>
+  </head>
+
+  <body>
+  Leitstelle Jugendfeuerwehr Hamm-Mitte
+  <h1>ALARMDEPESCHE</h1>
+  <hr />
+  <table class="showBorders">
+    <tr>
+      <td>Einsatznummer:</td>
+      <td>Disposition:</td>
+      <td>Alarmzeit:</td>
+    </tr>
+    <tr>
+      <td><!--EINSATZNUMMER--></td>
+      <td><!--ANNAHMEDATUM--> <!--ANNAHMEZEIT--></td>
+      <td><!--ALARMDATUM--> <!--ALARMZEIT--></td>
+    </tr>
+  </table>
+  <hr />
+  <table class="hideBorders">
+    <tr>
+      <td><h4>Stichwort:</h4></td>
+      <td><h3><b><!--STICHWORT--></b></h3></td>
+    </tr>
+    <tr>
+      <td><h4>Strasse:</h4></td>
+      <td><h3><b><!--STRASSE--></b></h3></td>
+    </tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr>
+      <td><h4>Ort:</h4></td>
+      <td><h4><!--ORT--></h4></td>
+    </tr>
+    <tr>
+      <td><h4>Objekt:</h4></td>
+      <td><h4><!--OBJEKT--></h4></td>
+    </tr>
+    <tr>
+      <td><h4>Anfahrt:</h4></td>
+      <td><h4><!--ANFAHRT--></h4></td>
+    </tr>
+    <tr>
+      <td><h4>Anrufer:</h4></td>
+      <td><h4><!--ANRUFER--></h4></td>
+    </tr>
+    <tr>
+      <td><h4>Telefonnummer:</h4></td>
+      <td><h4><!--TELNUMMER--></h4></td></tr>
+    <tr>
+      <td><h4>Geschaedigter:</h4></td>
+      <td><h4><!--GESCHAEDIGTER--></h4></td></tr>
+  </table>
+  <hr />
+  <div>
+    <h3 class="info">Bemerkung:</h3>
+    <h4><!--BEMERKUNG--></h4>
+    <hr />
+    <h3>Alarmierungen:</h3>
+    <h4><!--FAHRZEUGE--></h4>
+  </div>
+  <hr />
+
+  <img src="map.png" width="600"></img>
 </body></html>

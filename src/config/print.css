@@ -1,0 +1,21 @@
+
+table.showBorders td {
+  padding-left: 25px;
+}
+
+table.hideBorders td {
+  padding-left: 50px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.info h3 {
+  padding-left: 50px;
+}
