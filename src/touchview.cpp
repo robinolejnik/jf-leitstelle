@@ -7,7 +7,6 @@ TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
     timer->start(1000);
-    tel_player = new QMediaPlayer();
     durchsage = new Durchsage();
     showTime();
 

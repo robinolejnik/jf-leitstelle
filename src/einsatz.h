@@ -10,8 +10,8 @@
 class Einsatz : public QObject {
     Q_OBJECT
 public:
-    explicit Einsatz(QObject *parent = 0);
-    Einsatz(const Einsatz &e, QObject *parent = 0);
+    explicit Einsatz(QObject *parent = nullptr);
+    Einsatz(const Einsatz &e, QObject *parent = nullptr);
     void operator=(const Einsatz &e);
     static QList<Einsatz> load();
     static void save(QList<Einsatz> &list);

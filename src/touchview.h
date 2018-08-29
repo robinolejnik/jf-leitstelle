@@ -32,7 +32,7 @@ signals:
     void EinsatzDisponiert(unsigned int);
 
 public:
-    explicit TouchView(QWidget *parent = 0);
+    explicit TouchView(QWidget *parent = nullptr);
     void setEinsatz(Einsatz &e);
     void undisponierte_einsaetze();
     ~TouchView();
@@ -86,7 +86,6 @@ private:
     QTimer *timer;
     Einsatz einsatz;
     Ui::TouchView *ui;
-    QMediaPlayer *tel_player;
     QMediaPlaylist *playlist;
     QMediaPlayer *player;
 };

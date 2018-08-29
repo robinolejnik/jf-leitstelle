@@ -30,7 +30,7 @@ signals:
     void resetViews();
 
 public:
-    explicit EinsatzForm(QWidget *parent = 0);
+    explicit EinsatzForm(QWidget *parent = nullptr);
     void setTouchView(TouchView *t);
     void setKarte(Karte *k);
     ~EinsatzForm();

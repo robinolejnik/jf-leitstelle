@@ -149,7 +149,7 @@ void EinsatzForm::on_pushButton_save_clicked() {
     e.zeit_annahme = QTime::fromString(ui->label_annahmezeit->text(), "hh:mm:ss");
     e.stichwort = ui->comboBox_stichwort->currentText();
     e.rueckmeldungen = ui->textEdit_rueckmeldungen->toPlainText();
-    e.einsatznummer = ui->label_einsatznummer->text().toInt();
+    e.einsatznummer = ui->label_einsatznummer->text().toUInt();
 
     foreach(QListWidgetItem *item, ui->listWidget_fahrzeuge->selectedItems()) {
         e.fahrzeuge_file.append(item->data(Qt::UserRole+1).toString());
@@ -178,8 +178,8 @@ void EinsatzForm::on_pushButton_save_clicked() {
     else {      // existing
         for(int i=0;i<ui->listWidget->count();i++) {
             QListWidgetItem *item = ui->listWidget->item(i);
-            int enr = item->data(Qt::UserRole).value<Einsatz>().einsatznummer;
-            if(enr==ui->label_einsatznummer->text().toInt()) {
+            unsigned int enr = item->data(Qt::UserRole).value<Einsatz>().einsatznummer;
+            if(enr==ui->label_einsatznummer->text().toUInt()) {
                 item->setText(e.stichwort + "\n" + e.strasse + " " + e.hausnummer + "\n" + e.objekt);
                 if(e.stichwort.contains("BMA Automatische Feuermeldung"))
                     item->setIcon(QIcon(":/icon/building.png"));

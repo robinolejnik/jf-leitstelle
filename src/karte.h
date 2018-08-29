@@ -16,7 +16,7 @@ signals:
     void signalResetMap();
 
 public:
-    explicit Karte(QWidget *parent = 0);
+    explicit Karte(QWidget *parent = nullptr);
     void setEinsatz(Einsatz &e);
     ~Karte();
 

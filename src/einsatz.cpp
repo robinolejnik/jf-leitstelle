@@ -8,7 +8,7 @@ Einsatz::Einsatz(QObject *parent) : QObject(parent) {
 
 unsigned int Einsatz::Einsatznummer() {
     QSettings settings;
-    unsigned int enr = settings.value("einsatznummer").toInt();
+    unsigned int enr = settings.value("einsatznummer").toUInt();
     enr++;
     settings.setValue("einsatznummer", QVariant(enr));
     if(enr>1000)
@@ -117,7 +117,7 @@ QList<Einsatz> Einsatz::load() {
         e.anrufer = settings.value("anrufer").toString();
         e.anrufer_telefonnummer = settings.value("anrufer_telefonnummer").toString();
         e.bemerkung = settings.value("bemerkung").toString();
-        e.einsatznummer = settings.value("einsatznummer").toInt();
+        e.einsatznummer = settings.value("einsatznummer").toUInt();
         e.geschaedigter = settings.value("geschaedigter").toString();
         e.hausnummer = settings.value("hnr").toString();
         e.objekt = settings.value("objekt").toString();

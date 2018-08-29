@@ -15,7 +15,7 @@ class DialogBMA : public QDialog {
     Q_OBJECT
 
 public:
-    explicit DialogBMA(QWidget *parent = 0);
+    explicit DialogBMA(QWidget *parent = nullptr);
     void setEinsatz(Einsatz &e);
     ~DialogBMA();
 

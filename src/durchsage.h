@@ -16,7 +16,7 @@ private:
     QAudioRecorder *recorder;
     QMediaPlayer *player;
 public:
-    explicit Durchsage(QObject *parent = 0);
+    explicit Durchsage(QObject *parent = nullptr);
     void record();
     void stop();
     void play();

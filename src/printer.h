@@ -12,7 +12,7 @@
 class Printer : public QObject {
     Q_OBJECT
 public:
-    explicit Printer(QObject *parent = 0);
+    explicit Printer(QObject *parent = nullptr);
     void print();
     void print(Einsatz &e);
     ~Printer();
