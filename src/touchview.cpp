@@ -3,7 +3,7 @@
 
 TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     ui->setupUi(this);
-    QSettings settings("config.ini", QSettings::IniFormat);
+    QSettings settings("config/config.ini", QSettings::IniFormat);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
     timer->start(1000);
@@ -126,7 +126,7 @@ void TouchView::on_pushButton_tel_delete_clicked() {
 }
 
 void TouchView::on_pushButton_tel_refresh_clicked() {
-    QSettings settings("config.ini", QSettings::IniFormat);
+    QSettings settings("config/config.ini", QSettings::IniFormat);
     player->stop();
     playlist->clear();
     while(ui->listWidget_tel->count()>0) {

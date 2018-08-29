@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     QCoreApplication::setApplicationName("JugendfeuerwehrLeitstelle");
     QCoreApplication::setApplicationVersion("1");
 
-    QSettings settings("config.ini", QSettings::IniFormat);
+    QSettings settings("config/config.ini", QSettings::IniFormat);
 
     QApplication a(argc, argv);
 

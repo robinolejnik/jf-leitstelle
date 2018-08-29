@@ -15,8 +15,8 @@ void Printer::print() {
 }
 
 void Printer::print(Einsatz &e) {
-    QFile file("print.html");
-    QFile cssfile("print.css");
+    QFile file("config/print.html");
+    QFile cssfile("config/print.css");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
     if(!cssfile.open(QIODevice::ReadOnly | QIODevice::Text))
