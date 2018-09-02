@@ -10,15 +10,16 @@
 #include <QDir>
 #include <QUrl>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QTextStream>
 #include <QDesktopServices>
 #include <QFileSystemWatcher>
-#include <QMediaPlaylist>
 #include <QListWidgetItem>
 #include <QProcess>
 #include "einsatz.h"
 #include "printer.h"
 #include "durchsage.h"
+#include "audiohandler.h"
 
 namespace Ui {
     class TouchView;
@@ -88,6 +89,7 @@ private:
     Ui::TouchView *ui;
     QMediaPlaylist *playlist;
     QMediaPlayer *player;
+    AudioHandler *audiohandler;
 };
 
 #endif // TOUCHVIEW_H

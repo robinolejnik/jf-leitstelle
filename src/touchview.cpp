@@ -36,6 +36,8 @@ TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     ui->label_anzahl_ausdrucke->clear();
     ui->label_einsatztext->clear();
     ui->label_fahrzeuge->clear();
+
+    audiohandler = new AudioHandler(this);
 }
 
 TouchView::~TouchView() {

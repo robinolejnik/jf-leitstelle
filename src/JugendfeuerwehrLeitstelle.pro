@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     einsatz.cpp \
     einsatzform.cpp \
     printer.cpp \
-    dialogbma.cpp
+    dialogbma.cpp \
+    audiohandler.cpp
 
 HEADERS  += \
     durchsage.h touchview.h \
@@ -20,7 +21,8 @@ HEADERS  += \
     einsatz.h \
     einsatzform.h \
     printer.h \
-    dialogbma.h
+    dialogbma.h \
+    audiohandler.h
 
 FORMS    += \
     touchview.ui \
