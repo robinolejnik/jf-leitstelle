@@ -28,9 +28,6 @@ TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     }
     settings.endArray();
     ui->toolButton_tel->setChecked(true);
-    playlist = new QMediaPlaylist;
-    player = new QMediaPlayer;
-    player->setPlaylist(playlist);
     on_toolButton_tel_clicked();
     ui->toolButton_tel->setChecked(true);
     ui->label_anzahl_ausdrucke->clear();
@@ -100,23 +97,20 @@ void TouchView::resetView() {
 }
 
 void TouchView::on_listWidget_tel_currentItemChanged(QListWidgetItem *, QListWidgetItem *) {
-    player->stop();
-    playlist->clear();
+    audiohandler->resetPlayer(AudioHandler::LautsprecherHeadset);
+    audiohandler->resetPlayer(AudioHandler::LautsprecherLeitstelle);
 }
 
 void TouchView::on_pushButton_tel_play_clicked() {
     if(ui->listWidget_tel->currentItem()) {
-        player->stop();
-        QProcess::execute("headset.exe");
-        playlist->clear();
-        playlist->addMedia(QUrl::fromLocalFile(ui->listWidget_tel->currentItem()->data(Qt::UserRole).toString()));
-        player->play();
+        audiohandler->playFile(AudioHandler::LautsprecherHeadset, QUrl::fromLocalFile(ui->listWidget_tel->currentItem()->data(Qt::UserRole).toString()));
+        audiohandler->playFile(AudioHandler::LautsprecherLeitstelle, QUrl::fromLocalFile(ui->listWidget_tel->currentItem()->data(Qt::UserRole).toString()));
     }
 }
 
 void TouchView::on_pushButton_tel_stop_clicked() {
-    player->stop();
-    playlist->clear();
+    audiohandler->resetPlayer(AudioHandler::LautsprecherHeadset);
+    audiohandler->resetPlayer(AudioHandler::LautsprecherLeitstelle);
 }
 
 void TouchView::on_pushButton_tel_delete_clicked() {
@@ -129,8 +123,8 @@ void TouchView::on_pushButton_tel_delete_clicked() {
 
 void TouchView::on_pushButton_tel_refresh_clicked() {
     QSettings settings("config/config.ini", QSettings::IniFormat);
-    player->stop();
-    playlist->clear();
+    audiohandler->resetPlayer(AudioHandler::LautsprecherHeadset);
+    audiohandler->resetPlayer(AudioHandler::LautsprecherLeitstelle);
     while(ui->listWidget_tel->count()>0) {
         QListWidgetItem *item = ui->listWidget_tel->item(0);
         ui->listWidget_tel->removeItemWidget(item);
@@ -184,101 +178,60 @@ void TouchView::on_pushButton_melder_senden_clicked(){
 
 void TouchView::on_pushButton_aufnahme_clicked() {
     if(ui->pushButton_aufnahme->text()=="Aufnahme\nstarten") {
-        player->stop();
-        playlist->clear();
+        audiohandler->resetPlayer(AudioHandler::LautsprecherLeitstelle);
+        audiohandler->resetPlayer(AudioHandler::LautsprecherHoerer);
+        audiohandler->resetPlayer(AudioHandler::LautsprecherHeadset);
         durchsage->record();
         ui->pushButton_aufnahme->setText("Aufnahme\nbeenden");
     }
     else if(ui->pushButton_aufnahme->text()=="Aufnahme\nbeenden") {
-        player->stop();
-        playlist->clear();
         durchsage->stop();
         ui->pushButton_aufnahme->setText("Aufnahme\nstarten");
     }
 }
 
 void TouchView::on_toolButton_play_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename));
 }
 
 void TouchView::on_toolButton_play_feuergong_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/feuergong.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/feuergong.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_play_rettungsgong_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/rettungsgong.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/rettungsgong.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_play_einzelfahrzeug_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/einzelfahrzeug.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/einzelfahrzeug.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_play_durchsage_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/durchsage.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/durchsage.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_feuergong_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/feuergong.mp3"));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/feuergong.mp3"));
 }
 
 void TouchView::on_toolButton_rettungsgong_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/rettungsgong.mp3"));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/rettungsgong.mp3"));
 }
 
 void TouchView::on_toolButton_einzelfahrzeug_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/einzelfahrzeug.mp3"));
-    player->play();;
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/einzelfahrzeug.mp3"));
 }
 
 void TouchView::on_toolButton_durchsage_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/durchsage.mp3"));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/durchsage.mp3"));
 }
 
 void TouchView::on_pushButton_aufnahme_anhoeren_clicked() {
-    player->stop();
-    QProcess::execute("headset.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherHeadset, QUrl::fromLocalFile(durchsage->filename));
 }
 
 void TouchView::on_toolButton_tel_clicked() {
@@ -289,96 +242,59 @@ void TouchView::on_toolButton_tel_clicked() {
 }
 
 void TouchView::on_toolButton_leitstelle_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/leitstelle.wav"));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/leitstelle.wav"));
 }
 
 void TouchView::on_toolButton_play_feuergong_2_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/feuergong.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/feuergong.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_play_rettungsgong_2_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/rettungsgong.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/rettungsgong.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_play_einzelfahrzeug_2_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/einzelfahrzeug.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/einzelfahrzeug.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_toolButton_play_durchsage_2_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/durchsage.mp3"));
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/durchsage.mp3"));
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename), false);
 }
 
 void TouchView::on_pushButton_aufnahme_2_clicked() {
     if(ui->pushButton_aufnahme_2->text()=="Aufnahme\nstarten") {
-        player->stop();
-        playlist->clear();
+        audiohandler->resetPlayer(AudioHandler::LautsprecherLeitstelle);
+        audiohandler->resetPlayer(AudioHandler::LautsprecherHoerer);
+        audiohandler->resetPlayer(AudioHandler::LautsprecherHeadset);
         durchsage->record();
         ui->pushButton_aufnahme_2->setText("Aufnahme\nbeenden");
     }
     else if(ui->pushButton_aufnahme_2->text()=="Aufnahme\nbeenden") {
-        player->stop();
-        playlist->clear();
         durchsage->stop();
         ui->pushButton_aufnahme_2->setText("Aufnahme\nstarten");
     }
 }
 
 void TouchView::on_pushButton_aufnahme_anhoeren_2_clicked() {
-    player->stop();
-    QProcess::execute("headset.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherHeadset, QUrl::fromLocalFile(durchsage->filename));
 }
 
 void TouchView::on_pushButton_play_2_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl::fromLocalFile(durchsage->filename));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl::fromLocalFile(durchsage->filename));
 }
 
 void TouchView::on_toolButton_leitstelle_2_clicked() {
-    player->stop();
-    QProcess::execute("lautsprecher_durchsage.exe");
-    playlist->clear();
-    playlist->addMedia(QUrl("qrc:/leitstelle.wav"));
-    player->play();
+    audiohandler->playFile(AudioHandler::LautsprecherWache, QUrl("qrc:/leitstelle.wav"));
 }
 
 void TouchView::undisponierte_einsaetze() {
-    if(player->state()==QMediaPlayer::StoppedState) {
-        player->stop();
-        QProcess::execute("lautsprecher_leitstelle.exe");
-        playlist->clear();
-        playlist->addMedia(QUrl("qrc:/undisponierte_einsaetze.wav"));
-        player->play();
-    }
+    //if(player->state()==QMediaPlayer::StoppedState) {
+        audiohandler->playFile(AudioHandler::LautsprecherLeitstelle, QUrl("qrc:/undisponierte_einsaetze.wav"));
+    //}
 }
 
 void TouchView::on_toolButton_alarmieren_clicked() {

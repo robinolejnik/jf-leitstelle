@@ -87,8 +87,6 @@ private:
     QTimer *timer;
     Einsatz einsatz;
     Ui::TouchView *ui;
-    QMediaPlaylist *playlist;
-    QMediaPlayer *player;
     AudioHandler *audiohandler;
 };
 
