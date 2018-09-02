@@ -6,6 +6,7 @@
 #include <QAudioOutputSelectorControl>
 #include <QMediaPlayer>
 #include <QAudioRecorder>
+#include <QSettings>
 
 namespace Ui {
 class MainWindow;
@@ -20,18 +21,12 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_comboBox_Lautsprecher_Leitstelle_currentIndexChanged(int index);
-
     void on_pushButton_save_clicked();
-
     void on_pushButton_reset_clicked();
 
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;
-    QMediaPlayer *player2;
     QAudioRecorder *recorder;
     QAudioOutputSelectorControl *out;
 };
