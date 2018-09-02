@@ -24,6 +24,10 @@ private slots:
 
     void on_comboBox_Lautsprecher_Leitstelle_currentIndexChanged(int index);
 
+    void on_pushButton_save_clicked();
+
+    void on_pushButton_reset_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;

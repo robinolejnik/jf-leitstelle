@@ -7,24 +7,19 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     recorder = new QAudioRecorder();
-    player = new QMediaPlayer();
-    player2 = new QMediaPlayer();
-    player->setMedia(QUrl::fromLocalFile("C:/Users/robin/Desktop/JF-Leitstelle/extra/Gong/Gong-Durchsage-BF-Hamm.mp3"));
-    player2->setMedia(QUrl::fromLocalFile("C:/Users/robin/Desktop/JF-Leitstelle/extra/Gong/Gong-Durchsage-BF-Hamm.mp3"));
-    player->setVolume(100);
-    player2->setVolume(100);
-
     out = qobject_cast<QAudioOutputSelectorControl *>(player->service()->requestControl(QAudioOutputSelectorControl_iid));
 
     foreach(QString device, out->availableOutputs()) {
-        ui->comboBox_Funk_Senden->addItem(out->outputDescription(device), device);
+        ui->comboBox_Hoerer_Lautsprecher->addItem(out->outputDescription(device), device);
+        ui->comboBox_Funk_Ausgang->addItem(out->outputDescription(device), device);
         ui->comboBox_Lautsprecher_Wache->addItem(out->outputDescription(device), device);
         ui->comboBox_Headset_Lautsprecher->addItem(out->outputDescription(device), device);
         ui->comboBox_Lautsprecher_Leitstelle->addItem(out->outputDescription(device), device);
     }
     foreach(QString device, recorder->audioInputs()) {
-        ui->comboBox_Funk_Empfangen->addItem(recorder->audioInputDescription(device), device);
+        ui->comboBox_Funk_Eingang->addItem(recorder->audioInputDescription(device), device);
         ui->comboBox_Headset_Mikrofon->addItem(recorder->audioInputDescription(device), device);
+        ui->comboBox_Hoerer_Mikrofon->addItem(recorder->audioInputDescription(device), device);
     }
 }
 
@@ -43,4 +38,14 @@ void MainWindow::on_comboBox_Lautsprecher_Leitstelle_currentIndexChanged(int ind
 {
     QString device = ui->comboBox_Lautsprecher_Leitstelle->currentData().toString();
     out->setActiveOutput(device);
+}
+
+void MainWindow::on_pushButton_save_clicked()
+{
+
+}
+
+void MainWindow::on_pushButton_reset_clicked()
+{
+
 }

@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>197</height>
+    <width>513</width>
+    <height>249</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -22,7 +22,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="label_Headset_Mikrofon">
       <property name="text">
        <string>Headset Mikrofon</string>
       </property>
@@ -32,7 +32,7 @@
      <widget class="QComboBox" name="comboBox_Headset_Mikrofon"/>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="label_Headset_Lautsprecher">
       <property name="text">
        <string>Headset Lautsprecher</string>
       </property>
@@ -42,49 +42,76 @@
      <widget class="QComboBox" name="comboBox_Headset_Lautsprecher"/>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="label_Hoerer_Mikrofon">
+      <property name="text">
+       <string>Hörer Mikrofon</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="comboBox_Hoerer_Mikrofon"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_Hoerer_Lautsprecher">
+      <property name="text">
+       <string>Hörer Lautsprecher</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="comboBox_Hoerer_Lautsprecher"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_Lautsprecher_Leitstelle">
       <property name="text">
        <string>Lautsprecher Leitstelle</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="4" column="1">
      <widget class="QComboBox" name="comboBox_Lautsprecher_Leitstelle"/>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_4">
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_Lautsprecher_Wache">
       <property name="text">
        <string>Lautsprecher Wache</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
+    <item row="5" column="1">
      <widget class="QComboBox" name="comboBox_Lautsprecher_Wache"/>
     </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_5">
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_Funk_Eingang">
       <property name="text">
-       <string>Funk Senden</string>
+       <string>Funk Eingang</string>
       </property>
      </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QComboBox" name="comboBox_Funk_Senden"/>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Funk Empfang</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QComboBox" name="comboBox_Funk_Empfangen"/>
     </item>
     <item row="6" column="1">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QComboBox" name="comboBox_Funk_Eingang"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_Funk_Ausgang">
       <property name="text">
-       <string>Speichern</string>
+       <string>Funk Ausgang</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QComboBox" name="comboBox_Funk_Ausgang"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QPushButton" name="pushButton_reset">
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QPushButton" name="pushButton_save">
+      <property name="text">
+       <string>Save</string>
       </property>
      </widget>
     </item>
