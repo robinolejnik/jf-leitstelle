@@ -35,6 +35,10 @@ TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     ui->label_fahrzeuge->clear();
 
     audiohandler = new AudioHandler(this);
+    telefonDevice_Lautsprecher = AudioHandler::LautsprecherHeadset;
+    telefonDevice_Mikrofon = AudioHandler::MikrofonHeadset;
+    ui->pushButton_headset->setText("Headset\n\u2713");
+    ui->pushButton_hoerer->setText("Hörer\n");
 }
 
 TouchView::~TouchView() {
@@ -231,7 +235,7 @@ void TouchView::on_toolButton_durchsage_clicked() {
 }
 
 void TouchView::on_pushButton_aufnahme_anhoeren_clicked() {
-    audiohandler->playFile(AudioHandler::LautsprecherHeadset, QUrl::fromLocalFile(durchsage->filename));
+    audiohandler->playFile(telefonDevice_Lautsprecher, QUrl::fromLocalFile(durchsage->filename));
 }
 
 void TouchView::on_toolButton_tel_clicked() {
@@ -280,7 +284,7 @@ void TouchView::on_pushButton_aufnahme_2_clicked() {
 }
 
 void TouchView::on_pushButton_aufnahme_anhoeren_2_clicked() {
-    audiohandler->playFile(AudioHandler::LautsprecherHeadset, QUrl::fromLocalFile(durchsage->filename));
+    audiohandler->playFile(telefonDevice_Lautsprecher, QUrl::fromLocalFile(durchsage->filename));
 }
 
 void TouchView::on_pushButton_play_2_clicked() {
@@ -322,4 +326,18 @@ void TouchView::on_pushButton_einzelausdruck_clicked() {
         Printer p;
         p.print(einsatz);
     }
+}
+
+void TouchView::on_pushButton_hoerer_clicked() {
+    telefonDevice_Lautsprecher = AudioHandler::LautsprecherHoerer;
+    telefonDevice_Mikrofon = AudioHandler::MikrofonHoerer;
+    ui->pushButton_headset->setText("Headset\n");
+    ui->pushButton_hoerer->setText("Hörer\n\u2713");
+}
+
+void TouchView::on_pushButton_headset_clicked() {
+    telefonDevice_Lautsprecher = AudioHandler::LautsprecherHeadset;
+    telefonDevice_Mikrofon = AudioHandler::MikrofonHeadset;
+    ui->pushButton_headset->setText("Headset\n\u2713");
+    ui->pushButton_hoerer->setText("Hörer\n");
 }

@@ -78,6 +78,8 @@ private slots:
     void on_toolButton_leitstelle_2_clicked();
     void on_toolButton_alarmieren_clicked();
     void on_pushButton_einzelausdruck_clicked();
+    void on_pushButton_hoerer_clicked();
+    void on_pushButton_headset_clicked();
 
 public slots:
     void resetView();
@@ -88,6 +90,8 @@ private:
     Einsatz einsatz;
     Ui::TouchView *ui;
     AudioHandler *audiohandler;
+    AudioHandler::OutputDevice telefonDevice_Lautsprecher;
+    AudioHandler::InputDevice telefonDevice_Mikrofon;
 };
 
 #endif // TOUCHVIEW_H
