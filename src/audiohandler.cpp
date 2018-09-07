@@ -40,7 +40,7 @@ AudioHandler::AudioHandler(QObject *parent) : QObject(parent) {
 }
 
 QMediaPlayer *AudioHandler::getPlayerFromDevice(OutputDevice output) {
-    QMediaPlayer *player;
+    QMediaPlayer *player = player_leitstelle;
     switch(output) {
     case AusgangFunk:
         player = player_funk;
