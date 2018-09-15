@@ -38,7 +38,7 @@ DISTFILES += \
     config/stichworte.txt \
     config/streets.txt
 
-target.path = deploy
-dlltarget.path = deploy
+target.path = $$OUT_PWD/../deploy
+dlltarget.path = $$OUT_PWD/../deploy
+dlltarget.commands = windeployqt --qmldir $$PWD ../deploy
 INSTALLS += target dlltarget
-QMAKE_POST_LINK += windeployqt --qmldir jflts deploy

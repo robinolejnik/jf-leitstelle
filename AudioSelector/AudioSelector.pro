@@ -32,7 +32,7 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+target.path = $$OUT_PWD/../deploy
+dlltarget.path = $$OUT_PWD/../deploy
+dlltarget.commands = windeployqt --qmldir $$PWD ../deploy
+INSTALLS += target dlltarget
