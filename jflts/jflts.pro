@@ -37,3 +37,8 @@ DISTFILES += \
     config/print.html \
     config/stichworte.txt \
     config/streets.txt
+
+target.path = deploy
+dlltarget.path = deploy
+INSTALLS += target dlltarget
+QMAKE_POST_LINK += windeployqt --qmldir jflts deploy
