@@ -5,7 +5,6 @@ CONFIG += console
 TARGET = JugendfeuerwehrLeitstelle
 TEMPLATE = app
 
-
 SOURCES += main.cpp \
     durchsage.cpp touchview.cpp \
     karte.cpp \
@@ -38,7 +37,10 @@ DISTFILES += \
     config/stichworte.txt \
     config/streets.txt
 
+QMAKE_STRIP = echo
 target.path = $$OUT_PWD/../deploy
 dlltarget.path = $$OUT_PWD/../deploy
 dlltarget.commands = windeployqt --qmldir $$PWD ../deploy
-INSTALLS += target dlltarget
+configuration.path = $$OUT_PWD/../deploy/config
+configuration.files = $$PWD/config/*
+INSTALLS += target dlltarget configuration
