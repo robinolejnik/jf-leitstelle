@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QSettings>
+#include <QtDebug>
 #include <stdio.h>
 #include "einsatzform.h"
 #include "touchview.h"
@@ -13,6 +14,7 @@ int main(int argc, char *argv[]) {
     QCoreApplication::setApplicationVersion("1");
 
     QSettings settings("config/config.ini", QSettings::IniFormat);
+    qInfo() << "build" << __DATE__ << __TIME__;
 
     QApplication a(argc, argv);
 
