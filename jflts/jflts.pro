@@ -43,4 +43,6 @@ dlltarget.path = $$OUT_PWD/../deploy
 dlltarget.commands = windeployqt --qmldir $$PWD ../deploy
 configuration.path = $$OUT_PWD/../deploy/config
 configuration.files = $$PWD/config/*
-INSTALLS += target dlltarget configuration
+additionaldll.path = $$OUT_PWD/../deploy
+additionaldll.files = $$PWD/dll/*
+INSTALLS += target dlltarget additionaldll configuration
