@@ -40,9 +40,16 @@ DISTFILES += \
 QMAKE_STRIP = echo
 target.path = $$OUT_PWD/../deploy
 dlltarget.path = $$OUT_PWD/../deploy
-dlltarget.commands = windeployqt --qmldir $$PWD ../deploy
+dlltarget.commands = windeployqt --release --qmldir $$PWD ../deploy
 configuration.path = $$OUT_PWD/../deploy/config
 configuration.files = $$PWD/config/*
 additionaldll.path = $$OUT_PWD/../deploy
-additionaldll.files = $$PWD/dll/*
+
+win32-g++:contains(QMAKE_HOST.arch, x86_64): {
+    additionaldll.files = $$PWD/dll/64/*
+}
+else {
+    additionaldll.files = $$PWD/dll/32/*
+}
+
 INSTALLS += target dlltarget additionaldll configuration

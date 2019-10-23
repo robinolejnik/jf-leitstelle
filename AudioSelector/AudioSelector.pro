@@ -34,5 +34,5 @@ FORMS += \
 
 target.path = $$OUT_PWD/../deploy
 dlltarget.path = $$OUT_PWD/../deploy
-dlltarget.commands = windeployqt --qmldir $$PWD ../deploy
+dlltarget.commands = windeployqt --release --qmldir $$PWD ../deploy
 INSTALLS += target dlltarget
