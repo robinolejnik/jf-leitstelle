@@ -20,6 +20,7 @@
 #include "printer.h"
 #include "durchsage.h"
 #include "audiohandler.h"
+#include "pagingsystem.h"
 
 namespace Ui {
     class TouchView;
@@ -39,6 +40,9 @@ public:
     ~TouchView();
 
 private slots:
+    void PagingTxDisconnected(void);
+    void PagingTxConnected(void);
+
     void on_toolButton_tel_recordings_clicked();
     void on_toolButton_melder_clicked();
     void on_toolButton_wachalarm_clicked();
@@ -92,6 +96,7 @@ private:
     AudioHandler *audiohandler;
     AudioHandler::OutputDevice telefonDevice_Lautsprecher;
     AudioHandler::InputDevice telefonDevice_Mikrofon;
+    PagingSystem* m_pagingSystem;
 };
 
 #endif // TOUCHVIEW_H

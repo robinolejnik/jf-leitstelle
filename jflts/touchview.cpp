@@ -25,6 +25,7 @@ TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
         QListWidgetItem *item = new QListWidgetItem("\n" + settings.value("name").toString() + "\n");
         item->setData(Qt::UserRole, QVariant(settings.value("name")));
         item->setData(Qt::UserRole+1, QVariant(settings.value("file")));
+        item->setData(Qt::UserRole+2, QVariant(settings.value("ric")));
         ui->listWidget_melder->addItem(item);
     }
     settings.endArray();
@@ -40,6 +41,11 @@ TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     telefonDevice_Mikrofon = AudioHandler::MikrofonHeadset;
     ui->pushButton_headset->setText("Headset\n\u2713");
     ui->pushButton_hoerer->setText("Hörer\n");
+
+    m_pagingSystem = new PagingSystem(this);
+    connect(m_pagingSystem, &PagingSystem::pagingTransmitterConnected, this, &TouchView::PagingTxConnected);
+    connect(m_pagingSystem, &PagingSystem::pagingTransmitterDisconnected, this, &TouchView::PagingTxDisconnected);
+    ui->label_paging_tx_state->setVisible(false);
 }
 
 TouchView::~TouchView() {
@@ -49,6 +55,14 @@ TouchView::~TouchView() {
         delete item;
     }
     delete ui;
+}
+
+void TouchView::PagingTxDisconnected() {
+    ui->label_paging_tx_state->setVisible(true);
+}
+
+void TouchView::PagingTxConnected() {
+    ui->label_paging_tx_state->setVisible(false);
 }
 
 void TouchView::on_toolButton_tel_recordings_clicked() {
@@ -173,9 +187,14 @@ void TouchView::on_pushButton_tel_trennen_clicked() {
 void TouchView::on_pushButton_melder_senden_clicked(){
     foreach(QListWidgetItem *item, ui->listWidget_melder->selectedItems()) {
         QFile file(item->data(Qt::UserRole+1).toString());
+        uint32_t ric = item->data(Qt::UserRole+2).toInt();
+        QString text = ui->textBrowser_melder->toPlainText();
+
+        m_pagingSystem->startPage(ric, text);
+
         if(file.open(QFile::WriteOnly | QFile::Truncate | QFile::Text)) {
             QTextStream stream(&file);
-            stream << ui->textBrowser_melder->toPlainText();
+            stream << text;
             file.close();
         }
     }
@@ -308,14 +327,21 @@ void TouchView::on_toolButton_alarmieren_clicked() {
         einsatz.zeit_alarm = QTime::currentTime();
         einsatz.datum_alarm = QDate::currentDate();
         Printer p;
-        for(int i=0;i<einsatz.fahrzeuge_name.size();i++)
+        for(int i=0;i<einsatz.fahrzeuge_name.size();i++) {
             p.print(einsatz);
+        }
+
+        QString text = einsatz.einsatztext();
+
+        foreach(QString ricString, einsatz.fahrzeuge_ric) {
+            m_pagingSystem->startPage(ricString.toInt(), text);
+        }
 
         foreach(QString filename, einsatz.fahrzeuge_file) {
             QFile file(filename);
             if(file.open(QFile::WriteOnly | QFile::Truncate | QFile::Text)) {
                 QTextStream stream(&file);
-                stream << einsatz.einsatztext();
+                stream << text;
                 file.close();
             }
         }

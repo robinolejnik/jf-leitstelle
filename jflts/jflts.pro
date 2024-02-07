@@ -1,4 +1,4 @@
-QT       += core gui widgets multimedia printsupport location quickwidgets
+QT += core gui widgets multimedia printsupport location quickwidgets websockets
 
 CONFIG += console
 
@@ -10,6 +10,7 @@ SOURCES += main.cpp \
     karte.cpp \
     einsatz.cpp \
     einsatzform.cpp \
+    pagingsystem.cpp \
     printer.cpp \
     dialogbma.cpp \
     audiohandler.cpp
@@ -19,6 +20,7 @@ HEADERS  += \
     karte.h \
     einsatz.h \
     einsatzform.h \
+    pagingsystem.h \
     printer.h \
     dialogbma.h \
     audiohandler.h
