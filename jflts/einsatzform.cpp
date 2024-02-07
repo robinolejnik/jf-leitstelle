@@ -26,7 +26,7 @@ EinsatzForm::EinsatzForm(QWidget *parent) : QWidget(parent), ui(new Ui::EinsatzF
            file.close();
     }
     else {
-        qWarning("steets.txt not found");
+        qWarning("config/steets.txt not found");
     }
     file.setFileName("config/stichworte.txt");
     if(file.open(QIODevice::ReadOnly)) {
@@ -37,7 +37,7 @@ EinsatzForm::EinsatzForm(QWidget *parent) : QWidget(parent), ui(new Ui::EinsatzF
            file.close();
     }
     else {
-        qWarning("stichworte.txt not found");
+        qWarning("config/stichworte.txt not found");
     }
 
     QSettings settings("config/config.ini", QSettings::IniFormat);

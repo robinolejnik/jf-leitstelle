@@ -1,5 +1,6 @@
 #include "touchview.h"
 #include "ui_touchview.h"
+#include <QtDebug>
 
 TouchView::TouchView(QWidget *parent) : QWidget(parent), ui(new Ui::TouchView) {
     ui->setupUi(this);
