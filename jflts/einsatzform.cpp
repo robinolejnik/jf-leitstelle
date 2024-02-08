@@ -26,7 +26,7 @@ EinsatzForm::EinsatzForm(QWidget *parent) : QWidget(parent), ui(new Ui::EinsatzF
            file.close();
     }
     else {
-        qWarning("steets.txt not found");
+        qWarning("config/steets.txt not found");
     }
     file.setFileName("config/stichworte.txt");
     if(file.open(QIODevice::ReadOnly)) {
@@ -37,7 +37,7 @@ EinsatzForm::EinsatzForm(QWidget *parent) : QWidget(parent), ui(new Ui::EinsatzF
            file.close();
     }
     else {
-        qWarning("stichworte.txt not found");
+        qWarning("config/stichworte.txt not found");
     }
 
     QSettings settings("config/config.ini", QSettings::IniFormat);
@@ -47,6 +47,7 @@ EinsatzForm::EinsatzForm(QWidget *parent) : QWidget(parent), ui(new Ui::EinsatzF
         QListWidgetItem *item = new QListWidgetItem("\n" + settings.value("name").toString() + "\n");
         item->setData(Qt::UserRole, QVariant(settings.value("name")));
         item->setData(Qt::UserRole+1, QVariant(settings.value("file")));
+        item->setData(Qt::UserRole+2, QVariant(settings.value("ric")));
         ui->listWidget_fahrzeuge->addItem(item);
     }
     settings.endArray();
@@ -82,8 +83,9 @@ void EinsatzForm::readPendingDatagrams() {
         bma.exec();
         on_pushButton_reset_clicked();
         foreach(QListWidgetItem *item, ui->listWidget_fahrzeuge->selectedItems()) {
-            e.fahrzeuge_file.append(item->data(Qt::UserRole+1).toString());
             e.fahrzeuge_name.append(item->data(Qt::UserRole).toString());
+            e.fahrzeuge_file.append(item->data(Qt::UserRole+1).toString());
+            e.fahrzeuge_ric.append(item->data(Qt::UserRole+2).toString());
         }
 
         ui->label_einsatznummer->setText(QString::number(e.einsatznummer));
@@ -152,8 +154,9 @@ void EinsatzForm::on_pushButton_save_clicked() {
     e.einsatznummer = ui->label_einsatznummer->text().toUInt();
 
     foreach(QListWidgetItem *item, ui->listWidget_fahrzeuge->selectedItems()) {
-        e.fahrzeuge_file.append(item->data(Qt::UserRole+1).toString());
         e.fahrzeuge_name.append(item->data(Qt::UserRole).toString());
+        e.fahrzeuge_file.append(item->data(Qt::UserRole+1).toString());
+        e.fahrzeuge_ric.append(item->data(Qt::UserRole+2).toString());
     }
 
     if(ui->label_einsatznummer->text().toInt()==0) {   // new

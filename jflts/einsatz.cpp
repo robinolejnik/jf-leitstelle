@@ -23,8 +23,9 @@ Einsatz::Einsatz(const Einsatz &e, QObject *parent) : QObject(parent) {
     zeit_annahme = e.zeit_annahme;
     einsatznummer = e.einsatznummer;
     bemerkung = e.bemerkung;
-    fahrzeuge_file = e.fahrzeuge_file;
     fahrzeuge_name = e.fahrzeuge_name;
+    fahrzeuge_file = e.fahrzeuge_file;
+    fahrzeuge_ric = e.fahrzeuge_ric;
     strasse = e.strasse;
     stichwort = e.stichwort;
     rueckmeldungen = e.rueckmeldungen;
@@ -53,8 +54,9 @@ void Einsatz::operator=(const Einsatz &e) {
     strasse = e.strasse;
     stichwort = e.stichwort;
     sonderrechte = e.sonderrechte;
-    fahrzeuge_file = e.fahrzeuge_file;
     fahrzeuge_name = e.fahrzeuge_name;
+    fahrzeuge_file = e.fahrzeuge_file;
+    fahrzeuge_ric = e.fahrzeuge_ric;
     hausnummer = e.hausnummer;
     anrufer = e.anrufer;
     rueckmeldungen = e.rueckmeldungen;
@@ -123,8 +125,9 @@ QList<Einsatz> Einsatz::load() {
         e.objekt = settings.value("objekt").toString();
         e.ort = settings.value("ort").toString();
         e.stichwort = settings.value("stichwort").toString();
-        e.fahrzeuge_file = settings.value("fahrzeuge_file").toStringList();
         e.fahrzeuge_name = settings.value("fahrzeuge_name").toStringList();
+        e.fahrzeuge_file = settings.value("fahrzeuge_file").toStringList();
+        e.fahrzeuge_ric = settings.value("fahrzeuge_ric").toStringList();
         e.strasse = settings.value("strasse").toString();
         e.sonderrechte = settings.value("sonderrechte").toBool();
         e.rueckmeldungen = settings.value("rueckmeldungen").toString();
@@ -159,6 +162,7 @@ void Einsatz::save(QList<Einsatz> &list) {
         settings.setValue("rueckmeldungen", QVariant(list[i].rueckmeldungen));
         settings.setValue("fahrzeuge_name", QVariant(list[i].fahrzeuge_name));
         settings.setValue("fahrzeuge_file", QVariant(list[i].fahrzeuge_file));
+        settings.setValue("fahrzeuge_ric", QVariant(list[i].fahrzeuge_ric));
     }
     settings.endArray();
 }

@@ -31,6 +31,7 @@ public:
     QString hausnummer;
     QStringList fahrzeuge_name;
     QStringList fahrzeuge_file;
+    QStringList fahrzeuge_ric;
     bool sonderrechte;
     QString rueckmeldungen;
     QTime zeit_annahme;
