@@ -4,7 +4,6 @@
 #include <QDialog>
 #include <QProcess>
 #include <QMediaPlayer>
-#include <QMediaPlaylist>
 #include "einsatz.h"
 
 namespace Ui {
@@ -17,12 +16,10 @@ class DialogBMA : public QDialog {
 public:
     explicit DialogBMA(QWidget *parent = nullptr);
     void setEinsatz(Einsatz &e);
-    ~DialogBMA();
 
 private:
     Ui::DialogBMA *ui;
-    QMediaPlayer *player;
-    QMediaPlaylist *playlist;
+    QMediaPlayer *m_player;
 };
 
 #endif // DIALOGBMA_H
